@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import "../styles/Header.module.css";
 import CustomMenu from "./menu";
 import PromoBanner from "./side-promo-banner";
+import FreeShippingBanner from "./free-shippig-banner";
 
 const { Header, Content } = Layout;
 const items1 = [
@@ -62,6 +63,7 @@ const Homeheader = () => (
       }}
     >
       <PromoBanner />
+      <FreeShippingBanner />
     </Content>
   </Layout>
 );

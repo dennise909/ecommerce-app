@@ -9,6 +9,7 @@ const Container = styled.div`
   width: 15rem;
   margin: 1rem;
   background-color: #f9f9f9;
+  border-radius: 30px;
 `;
 const onSearch = (value: string) => console.log(value);
 
@@ -22,7 +23,7 @@ const PromoBanner: React.FC = () => {
         <Search
           placeholder="Enter promo code"
           onSearch={onSearch}
-          style={{ width: 200 }}
+          style={{ width: 1000, borderRadius: "30px" }}
         />
       </Row>
       <Row justify="center" className="mt-4 p-3">

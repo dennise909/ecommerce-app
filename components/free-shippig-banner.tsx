@@ -1,39 +1,32 @@
-import { Input, Row, Divider } from "antd";
+import { Row } from "antd";
 import React from "react";
-import "../styles/Home.module.css";
+import styled from "@emotion/styled";
+import { css, cx } from "@emotion/css";
 
-const { Search } = Input;
+const Container = styled.div`
+  height: 8rem;
+  width: 15rem;
+  margin: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 30px;
+`;
 
-const onSearch = (value: string) => console.log(value);
+const styles = {
+  row: css`
+    margin-top: 10px;
+  `,
+  text: css``,
+};
 
-const ShippingBanner: React.FC = () => {
+const FreeShippingBanner: React.FC = () => {
   return (
-    <>
-      <div
-        style={{
-          height: "8rem",
-          width: "15rem",
-          margin: "1rem",
-          backgroundColor: "#f9f9f9",
-        }}
-        className="rounded-lg content-center flex flex-col space-y-1"
-      >
-        <Row justify="center" className="mt-4">
-          <h2 className="font-sans text-base">Have a promo code?</h2>
-        </Row>
-        <Row justify="center">
-          <Search
-            placeholder="Enter promo code"
-            onSearch={onSearch}
-            style={{ width: 200 }}
-          />
-        </Row>
-        <Row justify="center" className="mt-4 p-3">
-          <a>All promotions and coupons</a>
-        </Row>
-      </div>
-    </>
+    <Container>
+      <Row justify="start" align="bottom" className={styles.row}>
+        <h2 className="font-sans text-base">Free Shipping</h2>
+        <p>by courier to the house</p>
+      </Row>
+    </Container>
   );
 };
 
-export default ShippingBanner;
+export default FreeShippingBanner;

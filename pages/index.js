@@ -1,9 +1,10 @@
-import Homeheader from "../components/header";
+import Home from "../pages/home";
+import PreLoader from "../pages/pre-loader";
 
-export default function Home() {
+export default function App() {
   return (
-    <>
-      <Homeheader />
-    </>
+    <PreLoader>
+      <Home />
+    </PreLoader>
   );
 }

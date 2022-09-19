@@ -7,11 +7,12 @@ function CustomMenu({
 }) {
   return (
     <>
+      {/* {items[0].key} */}
       {items.map((item: any) => (
         <Menu.Item
           key={item?.key}
           label={item?.label}
-          icon={item?.icon}
+          // icon={item?.icon}
           title={item?.label}
         ></Menu.Item>
       ))}

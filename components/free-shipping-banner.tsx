@@ -1,31 +1,24 @@
 import { Row } from "antd";
 import React from "react";
-import styled from "@emotion/styled";
 import { css, cx } from "@emotion/css";
-
-const Container = styled.div`
-  height: 8rem;
-  width: 15rem;
-  margin: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 30px;
-`;
+import BannerContainer from "./common/banner-container";
 
 const styles = {
   row: css`
     margin-top: 10px;
+    margin-inline: 0px;
+    padding: 3rem 1rem 0;
   `,
-  text: css``,
 };
 
 const FreeShippingBanner: React.FC = () => {
   return (
-    <Container>
+    <BannerContainer variantColor="green">
       <Row justify="start" align="bottom" className={styles.row}>
         <h2 className="font-sans text-base">Free Shipping</h2>
         <p>by courier to the house</p>
       </Row>
-    </Container>
+    </BannerContainer>
   );
 };
 

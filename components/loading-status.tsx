@@ -1,18 +1,21 @@
 import { css, keyframes } from "@emotion/css";
 import styled from "@emotion/styled";
 
-const Circlesize = styled.div<Circlesize>`
+type CirclesizeProps = {
+  size: string;
+  spinnercolor: string;
+};
+
+const Circlesize = styled.div<CirclesizeProps>`
   //https://stackoverflow.com/questions/61416564/emotion-js-and-typescript-problems-when-passing-props-to-styled
   position: absolute;
-  width: ${({ size }: { size: string }) => size};
-  height: ${({ size }: { size: string }) => size};
-  top: calc(50% - ${({ size }: { size: string }) => size} / 2);
-  left: calc(50% - ${({ size }: { size: string }) => size} / 2);
+  width: ${({ size }: CirclesizeProps) => size};
+  height: ${({ size }: CirclesizeProps) => size};
+  top: calc(50% - ${({ size }: CirclesizeProps) => size} / 2);
+  left: calc(50% - ${({ size }: CirclesizeProps) => size} / 2);
   border: 4px solid transparent;
-  border-left: 4px solid
-    ${({ spinnercolor }: { spinnercolor: string }) => spinnercolor};
-  border-right: 4px solid
-    ${({ spinnercolor }: { spinnercolor: string }) => spinnercolor};
+  border-left: 4px solid ${({ spinnercolor }: CirclesizeProps) => spinnercolor};
+  border-right: 4px solid ${({ spinnercolor }: CirclesizeProps) => spinnercolor};
   border-radius: 50%;
   animation: spinner2 650ms linear infinite;
 

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Home from "../pages/home";
 import LoadingStatus from "../components/loading-status";
 
 const PreLoader = ({ children }) => {
@@ -14,7 +13,7 @@ const PreLoader = ({ children }) => {
     return () => window.removeEventListener("load", handleLoading);
   }, []);
 
-  // return !isLoading ? children : <LoadingStatus />; //JSX return the status accoarding to the loading status
+  //return !isLoading ? children : <LoadingStatus />; //JSX return the status accoarding to the loading status
   return <LoadingStatus />;
 };
 

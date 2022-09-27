@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 type CirclesizeProps = {
   size: string;
   spinnercolor: string;
+  animationdirection?: string;
 };
 
 const spinner2 = keyframes({
@@ -13,7 +14,6 @@ const spinner2 = keyframes({
 });
 
 const Circlesize = styled.div<CirclesizeProps>`
-  //https://stackoverflow.com/questions/61416564/emotion-js-and-typescript-problems-when-passing-props-to-styled
   position: absolute;
   width: ${(props) => props.size};
   height: ${(props) => props.size};
@@ -23,7 +23,9 @@ const Circlesize = styled.div<CirclesizeProps>`
   border-left: 4px solid ${(props) => props.spinnercolor};
   border-right: 4px solid ${(props) => props.spinnercolor};
   border-radius: 50%;
-  animation: ${spinner2} 650ms linear infinite;
+  animation: ${spinner2} 1500ms linear infinite;
+  animation-direction: ${(props) =>
+    props.animationdirection ? props.animationdirection : "normal"};
 `;
 
 const styles = {
@@ -31,13 +33,8 @@ const styles = {
     marginTop: "7rem",
     marginBottom: "7rem",
     display: "grid",
-    gridTemplateColumns: "repeat(2, auto)",
     placeItems: "center",
     gap: "7rem",
-    "@media (min-width: 600px)": {
-      gridTemplateRows: "repeat(2, auto)",
-      gridTemplateColumns: "repeat(3, auto)",
-    },
   }),
   spinner: css`
     position: relative;
@@ -50,7 +47,11 @@ const LoadingStatus = () => {
     <div className={styles.container}>
       <div className={styles.spinner}>
         <Circlesize size="75px" spinnercolor="#eedd99"></Circlesize>
-        <Circlesize size="60px" spinnercolor="#eec290"></Circlesize>
+        <Circlesize
+          size="60px"
+          spinnercolor="#eec290"
+          animationdirection="reverse"
+        ></Circlesize>
         <Circlesize size="45px" spinnercolor="#eeaa88"></Circlesize>
       </div>
     </div>

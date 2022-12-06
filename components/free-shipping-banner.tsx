@@ -1,12 +1,11 @@
 import { Row } from "antd";
 import { useState, useEffect } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/css";
 import BannerContainer from "./common/banner-container";
-import { ThemeContext } from "@emotion/react";
 import LoadingStatus from "../components/loading-status";
 
-const spaceId = "y4zt3jqibesz";
-const accessToken = "Hbkx7eCtpIeKUAJ62lRvv_zF6sa8-yz-KwX7UgA5HQM";
+const spaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_KEY;
+const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_CDA_API_KEY;
 const environment = "master";
 
 const styles = {
@@ -28,7 +27,7 @@ const query = `query{
 
 const FreeShippingBanner: React.FC = () => {
   let [data, setData] = useState(null);
-
+  //let {data} = useContentfulData(query)
   useEffect(() => {
     window
       .fetch(
@@ -52,10 +51,15 @@ const FreeShippingBanner: React.FC = () => {
   console.log(itemsData);
   if (!itemsData) return <LoadingStatus />;
   return (
-    <BannerContainer variantColor="green">
+    <BannerContainer
+      height="8rem"
+      width="10rem"
+      margin="3rem"
+      variantColor="#2D4C41"
+    >
       <Row justify="start" align="bottom" className={styles.row}>
         <h2 className="font-sans text-base"></h2>
-        <p>by courier to the house</p>
+        <p>{itemsData[0].bannerTitle}</p>
       </Row>
     </BannerContainer>
   );

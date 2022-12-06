@@ -18,7 +18,12 @@ const onSearch = (value: string) => console.log(value);
 
 const PromoBanner: React.FC = () => {
   return (
-    <BannerContainer variantColor="#2c4c41">
+    <BannerContainer
+      height="8rem"
+      width="13rem"
+      margin="2rem"
+      variantColor="#2c4c41"
+    >
       <Row justify="center" className="mt-4">
         <h2 className="font-sans text-base">Have a promo code?</h2>
       </Row>

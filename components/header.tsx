@@ -8,9 +8,9 @@ import { Layout, Col, Row, Menu } from "antd";
 import React from "react";
 import "antd/dist/antd.css";
 import "../styles/Header.module.css";
-import CustomMenu from "./menu";
 import PromoBanner from "./side-promo-banner";
 import FreeShippingBanner from "./free-shipping-banner";
+import BannerContainer from "./main-home-banner";
 
 const { Header, Content } = Layout;
 const items1 = [
@@ -25,7 +25,7 @@ const items1 = [
     key: "2",
   },
   {
-    route: "/favorite",
+    route: "/cart",
     icon: <ShoppingCartOutlined />,
     key: "3",
   },
@@ -43,7 +43,7 @@ const Homeheader = () => (
       <Row>
         <Col span={8}>
           <Menu
-            theme="dark"
+            theme="light"
             mode="horizontal"
             defaultSelectedKeys={["1"]}
             items={items1}
@@ -55,7 +55,7 @@ const Homeheader = () => (
       </Row>
     </Header>
     <Menu
-      theme="dark"
+      theme="light"
       mode="horizontal"
       defaultSelectedKeys={["1"]}
       items={items3}
@@ -67,6 +67,7 @@ const Homeheader = () => (
     >
       <PromoBanner />
       <FreeShippingBanner />
+      <BannerContainer />
     </Content>
   </Layout>
 );

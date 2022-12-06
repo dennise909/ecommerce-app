@@ -13,8 +13,7 @@ const PreLoader = ({ children }) => {
     return () => window.removeEventListener("load", handleLoading);
   }, []);
 
-  //return !isLoading ? children : <LoadingStatus />; //JSX return the status accoarding to the loading status
-  return <LoadingStatus />;
+  return !isLoading ? children : <LoadingStatus />; //JSX return the status accoarding to the loading status
 };
 
 export default PreLoader;

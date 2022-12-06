@@ -1,7 +1,7 @@
 import { AudioOutlined } from "@ant-design/icons";
 import { Input, Space } from "antd";
 import styled from "@emotion/styled";
-import React, { CSSProperties } from "react";
+import React from "react";
 const { Search } = Input;
 const suffix = (
   <AudioOutlined

@@ -6,6 +6,7 @@ type ContainerProps = {
   width: string;
   margin: string;
   variantColor: string;
+  borderRadius: string;
 };
 
 const Container = styled.div<ContainerProps>`
@@ -14,7 +15,8 @@ const Container = styled.div<ContainerProps>`
   margin: ${(props) => props.margin};
   background-color: ${({ variantColor }: { variantColor: string }) =>
     variantColor ? variantColor : "#f9f9f9"};
-  border-radius: 30px;
+  background-style: var(--background-style);
+  border-radius: ${(props) => props.borderRadius};
 `;
 
 const BannerContainer = ({
@@ -23,12 +25,15 @@ const BannerContainer = ({
   height,
   width,
   margin,
-}: {
+  borderRadius,
+}: //
+{
   children: React.ReactNode;
-  variantColor: string;
+  variantColor?: string;
   height: string;
   width: string;
-  margin: string;
+  margin?: string;
+  borderRadius?: string;
 }) => {
   return (
     <Container
@@ -36,6 +41,11 @@ const BannerContainer = ({
       width={width}
       margin={margin}
       variantColor={variantColor}
+      borderRadius={borderRadius}
+      style={{
+        ["--background-style" as any]:
+          "https://unsplash.com/photos/5VkNa1LrS8A",
+      }}
     >
       {children}
     </Container>

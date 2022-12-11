@@ -4,15 +4,9 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import Searchbar from "../components/searchbar";
-import { Layout, Col, Row, Menu } from "antd";
-import React from "react";
-import "antd/dist/antd.css";
-import "../styles/Header.module.css";
-import PromoBanner from "./side-promo-banner";
-import FreeShippingBanner from "./free-shipping-banner";
-import BannerContainer from "./main-home-banner";
+import { Col, Row, Menu, theme } from "antd";
+import "antd/dist/reset.css";
 
-const { Header, Content } = Layout;
 const items1 = [
   {
     route: "/about",
@@ -36,40 +30,37 @@ const items3 = [
   { label: "Templates", key: "templates" },
   { label: "Support", key: "support" },
 ];
-const Homeheader = () => (
-  <Layout>
-    <Header className="header">
-      <div className="logo" />
-      <Row>
-        <Col span={8}>
-          <Menu
-            theme="light"
-            mode="horizontal"
-            defaultSelectedKeys={["1"]}
-            items={items1}
-          ></Menu>
-        </Col>
-        <Col span={12}>
-          <Searchbar />
-        </Col>
-      </Row>
-    </Header>
-    <Menu
-      theme="light"
-      mode="horizontal"
-      defaultSelectedKeys={["1"]}
-      items={items3}
-    ></Menu>
-    <Content
-      style={{
-        padding: "0 50px",
-      }}
-    >
-      <PromoBanner />
-      <FreeShippingBanner />
-      <BannerContainer />
-    </Content>
-  </Layout>
-);
 
+const { useToken } = theme;
+
+const Homeheader = ({ Header }: any) => {
+  const { token } = useToken();
+  return (
+    <>
+      <Header style={{ backgroundColor: token.colorPrimaryBackground }}>
+        <div className="logo" />
+        {/* agregar container */}
+        <Row justify="center">
+          <Col span={8}>
+            <Menu
+              style={{ backgroundColor: token.colorPrimaryBackground }}
+              mode="horizontal"
+              defaultSelectedKeys={["1"]}
+              items={items1}
+            ></Menu>
+          </Col>
+          <Col span={16}>
+            <Searchbar />
+          </Col>
+        </Row>
+      </Header>
+      <Menu
+        style={{ backgroundColor: token.colorPrimaryBackground }}
+        mode="horizontal"
+        defaultSelectedKeys={["1"]}
+        items={items3}
+      ></Menu>
+    </>
+  );
+};
 export default Homeheader;

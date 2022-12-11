@@ -52,10 +52,11 @@ const FreeShippingBanner: React.FC = () => {
   if (!itemsData) return <LoadingStatus />;
   return (
     <BannerContainer
-      height="8rem"
-      width="10rem"
-      margin="3rem"
+      margin="auto"
+      height="10rem"
+      width="23rem"
       variantColor="#2D4C41"
+      borderRadius="15px"
     >
       <Row justify="start" align="bottom" className={styles.row}>
         <h2 className="font-sans text-base"></h2>

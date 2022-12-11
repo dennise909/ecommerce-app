@@ -1,7 +1,19 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { ConfigProvider } from "antd";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimaryBackground: "#FFFF",
+          colorPrimary: "#EBA463",
+        },
+      }}
+    >
+      <Component {...pageProps} />
+    </ConfigProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

@@ -1,15 +1,15 @@
-import Homeheader from "../components/header";
-import Homecontent from "../components/content";
-import Homefooter from "../components/footer";
+import Pageheader from "../components/header";
+import Pagefooter from "../components/footer";
+import Homecontent from "../components/home-content";
 import { Layout } from "antd";
 
 const { Header, Content, Footer } = Layout;
 export default function Home() {
   return (
-    <Layout>
-      <Homeheader Header={Header} />
+    <Layout style={{ minHeight: "100vh" }}>
+      <Pageheader Header={Header} />
       <Homecontent Content={Content} />
-      <Homefooter Footer={Footer} />
+      <Pagefooter Footer={Footer} />
     </Layout>
   );
 }

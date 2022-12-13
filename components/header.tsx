@@ -6,6 +6,7 @@ import {
 import Searchbar from "../components/searchbar";
 import { Col, Row, Menu, theme } from "antd";
 import "antd/dist/reset.css";
+import { MenuItemProps } from "antd/es/menu/MenuItem";
 
 const items1 = [
   {
@@ -24,22 +25,24 @@ const items1 = [
     key: "3",
   },
 ];
-const items3 = [
+const items3: MenuItemProps["items"] = [
   { label: "News", key: "news" },
-  { label: "Marketplace", key: "market" },
+  {
+    label: <a href="/marketplace">Marketplace</a>,
+    key: "market",
+  },
   { label: "Templates", key: "templates" },
   { label: "Support", key: "support" },
 ];
 
 const { useToken } = theme;
 
-const Homeheader = ({ Header }: any) => {
+const Pageheader = ({ Header }: any) => {
   const { token } = useToken();
   return (
     <>
       <Header style={{ backgroundColor: token.colorPrimaryBackground }}>
         <div className="logo" />
-        {/* agregar container */}
         <Row justify="center">
           <Col span={8}>
             <Menu
@@ -63,4 +66,4 @@ const Homeheader = ({ Header }: any) => {
     </>
   );
 };
-export default Homeheader;
+export default Pageheader;

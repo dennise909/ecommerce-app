@@ -7,6 +7,8 @@ type ContainerProps = {
   margin: string;
   variantColor: string;
   borderRadius: string;
+  image1?: any;
+  backgroundImage?: any;
 };
 
 const Container = styled.div<ContainerProps>`
@@ -15,7 +17,7 @@ const Container = styled.div<ContainerProps>`
   margin: ${(props) => props.margin};
   background-color: ${({ variantColor }: { variantColor: string }) =>
     variantColor ? variantColor : "#f9f9f9"};
-  background-style: var(--background-style);
+  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   border-radius: ${(props) => props.borderRadius};
 `;
 
@@ -26,6 +28,7 @@ const BannerContainer = ({
   width,
   margin,
   borderRadius,
+  backgroundImage,
 }: //
 {
   children: React.ReactNode;
@@ -34,6 +37,7 @@ const BannerContainer = ({
   width: string;
   margin?: string;
   borderRadius?: string;
+  backgroundImage?: any;
 }) => {
   return (
     <Container
@@ -42,10 +46,7 @@ const BannerContainer = ({
       margin={margin}
       variantColor={variantColor}
       borderRadius={borderRadius}
-      style={{
-        ["--background-style" as any]:
-          "https://unsplash.com/photos/5VkNa1LrS8A",
-      }}
+      backgroundImage={backgroundImage}
     >
       {children}
     </Container>

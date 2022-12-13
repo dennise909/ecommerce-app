@@ -1,12 +1,7 @@
 import React from "react";
 import { Row } from "antd";
-import styled from "@emotion/styled";
 import BannerContainer from "../components/common/banner-container";
-import image1 from "../public/assets/image1.jpg";
-
 const HomeBanner: React.FC = () => {
-  const image = `url(${image1.src}`;
-
   return (
     <BannerContainer
       height="90%"
@@ -14,8 +9,10 @@ const HomeBanner: React.FC = () => {
       margin="2rem"
       variantColor="#2c4c41"
       borderRadius="15px"
+      backgroundImage={
+        "https://images.unsplash.com/photo-1666214277657-e60f05c40b04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
+      }
     >
-      {/* <Image src={image1} alt="Clothes pictures" layout="responsive"></Image> */}
       <Row>
         <h3>Holaaa</h3>
       </Row>

@@ -1,6 +1,6 @@
 import "antd/dist/reset.css";
-import { Row, Col, Space } from "antd";
-import BannerContainer from "../components/common/banner-container";
+import { Row, Col } from "antd";
+import BannerContainer from "./common/banner-container";
 import PromoBanner from "./side-promo-banner";
 import FreeShippingBanner from "./free-shipping-banner";
 import HomeBanner from "./main-home-banner";

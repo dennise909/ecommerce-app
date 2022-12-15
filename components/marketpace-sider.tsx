@@ -1,17 +1,23 @@
 import { Menu, theme } from "antd";
+import { useState } from "react";
 const { useToken } = theme;
+
 const items3 = [
   { label: "Shoes", key: "shoes" },
-  {
-    label: <a href="/marketplace">Dresses</a>,
-    key: "dresses",
-  },
+  { label: "Dresses", key: "dresses" },
   { label: "T-shirts", key: "tshirts" },
   { label: "Sweaters", key: "sweaters" },
   { label: "Jackets", key: "jackets" },
 ];
 export default function MktplSider({ Sider }) {
+  const [current, setCurrent] = useState("shoes");
   const { token } = useToken();
+
+  const onClick = (event) => {
+    console.log("click ", event);
+    setCurrent(event.key);
+  };
+
   return (
     <Sider
       style={{
@@ -27,6 +33,8 @@ export default function MktplSider({ Sider }) {
       }}
     >
       <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
         mode="inline"
         style={{
           backgroundColor: token.colorPrimaryBackground,

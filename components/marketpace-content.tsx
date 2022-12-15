@@ -33,9 +33,10 @@ const query = `query{
   }`;
 
 export default function MktplContent() {
-  let [data, setData] = useState([]);
-  let [list, setList] = useState({});
+  let [data, setData] = useState(null);
+  let [list, setList] = useState([]);
   let [loading, setLoading] = useState(true);
+  const [current, setCurrent] = useState("shoes");
   //let {data} = useContentfulData(query)
   useEffect(() => {
     window
@@ -57,30 +58,25 @@ export default function MktplContent() {
       .catch(() => {
         console.log("no data available");
       });
-    data?.productCardCollection?.items.map((item) => {
-      const newList = [];
-      if (item.contentfulMetadata.tags[0].name === "shoes") {
-        newList.push(item);
-      }
-      setList(newList);
-    });
-  }, [loading]);
+  }, []);
 
   function filterData(contentfulData, category) {
-    contentfulData?.productCardCollection?.items.map((item) => {
-      const newList = [];
-      if (item.contentfulMetadata.tags[0].name === category) {
-        newList.push(item);
-      }
+    if (contentfulData !== null) {
+      const newList = contentfulData?.productCardCollection?.items.filter(
+        (item) => {
+          if (item.contentfulMetadata.tags[0].name === category) {
+            return true;
+          }
+        }
+      );
       setList(newList);
-    });
+    }
   }
 
-  // useEffect(() => {
-  //   filterData(data, "shoes");
-  // }, []);
+  useEffect(() => {
+    filterData(data,current);
+  }, [data,current]);
 
-  console.log(list);
   return (
     <Content
       style={{
@@ -89,41 +85,14 @@ export default function MktplContent() {
       }}
     >
       <Layout>
-        <MktplSider Sider={Sider} />
+        <MktplSider Sider={Sider} current={current} onClick={setCurrent} />
         <BannerContainer height="25%" width="100%" variantColor="white">
           {loading ? (
             <LoadingStatus />
           ) : (
             <Row>
-              {data?.productCardCollection?.items.map((item) => {
-                const category = "tshirts";
-                if (item.contentfulMetadata.tags[0].name === category) {
-                  return (
-                    <Col lg={{ span: 6, offset: 1 }}>
-                      <Card
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          marginTop: "2rem",
-                        }}
-                        hoverable
-                        cover={
-                          <Image
-                            src={item.productImagesCollection.items[0].url}
-                          />
-                        }
-                      >
-                        <Meta
-                          title={item.productName}
-                          description={item.productDescription}
-                        />
-                      </Card>
-                    </Col>
-                  );
-                }
-              })}
               {/* {data.productCardCollection?.items.map((item) => console.log(item))} */}
-              {list?.productCardCollection?.items?.map((item) => (
+              {list.map((item) => (
                 <Col lg={{ span: 6, offset: 1 }}>
                   <Card
                     style={{ width: "100%", height: "100%", marginTop: "2rem" }}

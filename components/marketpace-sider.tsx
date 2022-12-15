@@ -9,13 +9,11 @@ const items3 = [
   { label: "Sweaters", key: "sweaters" },
   { label: "Jackets", key: "jackets" },
 ];
-export default function MktplSider({ Sider }) {
-  const [current, setCurrent] = useState("shoes");
+export default function MktplSider({ Sider, onClick, current }) {
   const { token } = useToken();
 
-  const onClick = (event) => {
-    console.log("click ", event);
-    setCurrent(event.key);
+  const handleClick = (event) => {
+    onClick(event.key);
   };
 
   return (
@@ -33,7 +31,7 @@ export default function MktplSider({ Sider }) {
       }}
     >
       <Menu
-        onClick={onClick}
+        onClick={handleClick}
         selectedKeys={[current]}
         mode="inline"
         style={{

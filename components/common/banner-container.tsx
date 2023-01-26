@@ -7,8 +7,8 @@ type ContainerProps = {
   margin: string;
   variantColor: string;
   borderRadius: string;
-  image1?: any;
   backgroundImage?: any;
+  backgroundSize?: any;
 };
 
 const Container = styled.div<ContainerProps>`
@@ -18,7 +18,11 @@ const Container = styled.div<ContainerProps>`
   background-color: ${({ variantColor }: { variantColor: string }) =>
     variantColor ? variantColor : "#f9f9f9"};
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  background-repeat: no-repeat;
+  background-size: ${(props) => props.backgroundSize};
+  background-position: center;
   border-radius: ${(props) => props.borderRadius};
+  max-width: 100%;
 `;
 
 const BannerContainer = ({
@@ -29,6 +33,7 @@ const BannerContainer = ({
   margin,
   borderRadius,
   backgroundImage,
+  backgroundSize,
 }: //
 {
   children: React.ReactNode;
@@ -38,6 +43,7 @@ const BannerContainer = ({
   margin?: string;
   borderRadius?: string;
   backgroundImage?: any;
+  backgroundSize?: any;
 }) => {
   return (
     <Container
@@ -47,6 +53,7 @@ const BannerContainer = ({
       variantColor={variantColor}
       borderRadius={borderRadius}
       backgroundImage={backgroundImage}
+      backgroundSize={backgroundSize}
     >
       {children}
     </Container>

@@ -25,7 +25,7 @@ const query = `query{
   }
 }`;
 
-const FreeShippingBanner: React.FC = () => {
+const FreeShippingBanner = ({ Title, Image }) => {
   let [data, setData] = useState(null);
   //let {data} = useContentfulData(query)
   useEffect(() => {
@@ -53,14 +53,16 @@ const FreeShippingBanner: React.FC = () => {
   return (
     <BannerContainer
       margin="auto"
-      height="10rem"
-      width="23rem"
+      height="15rem"
+      width="100%"
       variantColor="#2D4C41"
-      borderRadius="15px"
+      borderRadius="12px"
+      backgroundImage={Image}
+      backgroundSize="100%"
     >
       <Row justify="start" align="bottom" className={styles.row}>
         <h2 className="font-sans text-base"></h2>
-        <p>{itemsData[0].bannerTitle}</p>
+        <p>{Title}</p>
       </Row>
     </BannerContainer>
   );

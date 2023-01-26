@@ -42,9 +42,12 @@ const Pageheader = ({ Header }: any) => {
   return (
     <>
       <Header style={{ backgroundColor: token.colorPrimaryBackground }}>
-        <div className="logo" />
         <Row justify="center">
           <Col span={8}>
+            <div
+              style={{ border: "16px 0 16px 24px solid red" }}
+              className="logo"
+            ></div>
             <Menu
               style={{ backgroundColor: token.colorPrimaryBackground }}
               mode="horizontal"
